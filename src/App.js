@@ -18,7 +18,14 @@ const header = css({
   alignItems: 'space-around'
 })
 const loggedIn = css({
-  margin:'20px'
+  margin:'20px',
+})
+const link = css({
+  margin: '20px',
+  color: 'white',
+  ':hover': {
+    color:'red'
+  }
 })
 class App extends Component{
   constructor(props){
@@ -66,9 +73,9 @@ class App extends Component{
     <Router>
 
     <div className={header}>
-    {token !== null? <div style={{width:'200px'}} {...loggedIn}>You're logged in as {decoded.email} </div> : null}
-    {token === null? <Link style={{margin:'20px'}} to="/login">login page</Link> : null}
-    <Link style={{margin:'20px'}} to="/registration">skapa nytt konto</Link>
+    {token !== null? <div style={{width:'200px', color:'white'}} {...loggedIn}>You're logged in as {decoded.email} </div> : null}
+    {token === null? <Link {...link} to="/login">login page</Link> : null}
+    <Link {...link} to="/registration">skapa nytt konto</Link>
     {token !== null? <div {...loggedIn}><button onClick={this.logOut}>Sign Out</button></div> : null}
 
 
